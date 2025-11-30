@@ -3,6 +3,8 @@
 
 // Based on: https://www.youtube.com/watch?v=u2Juz5sQyYQ
 
+int real_waitid(idtype_t idtype, id_t id, siginfo_t *infop, int options, void*);
+
 int main () {
 	char command[255];
 	
@@ -17,7 +19,9 @@ int main () {
             break; // If something fails in the execve, just return the process
         } else {
             siginfo_t info;
-            waitid(P_ALL, 0, &info, WEXITED);
+            real_waitid(P_ALL, 0, &info, WEXITED, 0);
         }
     }
+
+   _exit(0); // Not using c library anymore, so we need to manually exit 
 }

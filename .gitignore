@@ -1,1 +1,8 @@
 shell
+shell.o
+init
+init.cpio
+a.out
+lua
+lua*
+files
